@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from escola.models import Student, Course
+from escola.models import Student, Course, Registration
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,3 +11,28 @@ class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fiels = '__all__'
+
+
+class RegistrationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Registration
+        exclude = ['id']
+
+
+class ListStudentRegistrationsSerializer(serializers.ModelSerializer):
+    course = serializers.ReadOnlyField(source='course.description')
+    period = serializers.SerializerMethodField()
+    class Meta:
+        model = Registration
+        fields = ['course', 'period']
+
+    def get_period(self, obj):
+        return obj.get_period_display()
+    
+
+class ListCourseRegistrationsSerializer(serializers.ModelSerializer):
+    student_name = serializers.ReadOnlyField(source='student.name')
+
+    class Meta:
+        model = Registration
+        fields = ['student_name']
