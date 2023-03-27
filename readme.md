@@ -1,4 +1,6 @@
-# School registering System API made with DRF
+# School registering System API made with DRF :snake:
+
+### This project is still in development! Some new features will be added in the coming days :warning:
 
 ## Used technologies:
 
