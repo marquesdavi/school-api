@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from escola.views import StudentsViewSet, CoursesViewSet, RegistrationsViewSet, ListStudentRegistrations, ListCourseRegistrations
 from rest_framework import routers
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.register('students', StudentsViewSet, basename='Students')
@@ -29,4 +31,4 @@ urlpatterns = [
     path('', include(router.urls)),
     path('student/<int:pk>/registrations/', ListStudentRegistrations.as_view()),
     path('course/<int:pk>/registrations/', ListCourseRegistrations.as_view()),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
