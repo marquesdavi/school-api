@@ -1,10 +1,4 @@
 # School registering System API made with DRF :snake:
-
-<<<<<<< HEAD
-### This project is still in development! Some new features will be added in the coming days and the documentarion will be optimized :warning:
-
-=======
->>>>>>> 755e26d6a8c50e0c5dc9bc9f1cb4659faa819b04
 ## Used technologies:
 
 * Python
